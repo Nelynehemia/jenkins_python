@@ -1,11 +1,11 @@
 pipeline {
-    agent any
+    agent { docker { image 'python:3' } }
 
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'python ./main.py'
+                sh 'python main.py'
             }
         }
         stage('Test') {
