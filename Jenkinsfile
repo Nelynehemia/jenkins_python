@@ -1,10 +1,9 @@
 pipeline {
-    agent none
+    agent { docker { image 'python:3.5.1' } }
     stages {
-        stages('Build'){
+        stage('build') {
             steps {
-                sh 'python -m py_compile add.py main.py'
-                stash(name: 'compilt-resuldts', includes: '.jenkins_python/*.py*')
+                sh 'python --version'
             }
         }
     }
