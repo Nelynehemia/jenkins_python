@@ -10,6 +10,8 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+                test_always_passes()
+                test_adding()
             }
         }
         stage('Deploy') {
