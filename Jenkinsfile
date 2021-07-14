@@ -1,15 +1,21 @@
 pipeline {
-    agent none
+    agent any
+
     stages {
         stage('Build') {
-            agent {
-                docker {
-                    image 'python:2-alpine'
-                }
-            }
             steps {
-                sh 'python -m py_compile main.py'
-                stash(name: 'compiled-results', includes: '*.py*')
+                echo 'Building..'
+                sh 'python main.py'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
